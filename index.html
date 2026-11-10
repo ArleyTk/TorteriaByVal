@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tortería by Val - Pastelería Artesanal</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FFF9FA;
+            --card-bg: #FCEEF1;
+            --primary-gold: #D4AF37;
+            --accent-dark-gold: #997A15;
+            --accent-pink: #E895B1;
+            --text-main: #3D2C30;
+            --text-muted: #7A6368;
+            --shadow-soft: 0 10px 30px rgba(212, 175, 55, 0.12);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        /* HEADER RESPONSIVE */
+        header {
+            background: rgba(255, 249, 250, 0.96);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            gap: 1rem;
+        }
+        .brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+            white-space: nowrap;
+        }
+        .brand span {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+        }
+        nav {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        nav a:hover {
+            color: var(--primary-gold);
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        .cart-btn-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+        .cart-btn-icon:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        .cart-badge {
+            position: absolute;
+            top: -2px;
+            right: -4px;
+            background: var(--primary-gold);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .btn-gold {
+            background-color: var(--primary-gold);
+            color: #FFF;
+            border: none;
+            padding: 0.65rem 1.4rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+        .btn-gold:hover,
+        .btn-gold:focus {
+            background-color: var(--accent-dark-gold);
+            color: #FFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        .btn-outline-gold {
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            background: transparent;
+            padding: 0.65rem 1.3rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--primary-gold);
+            color: #FFF;
+        }
+        /* HERO RESPONSIVE */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 3.5rem 6%;
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            line-height: 1.18;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+        .hero-content h2 span {
+            color: var(--primary-gold);
+        }
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            margin-bottom: 2rem;
+            max-width: 520px;
+        }
+        .hero-img-container {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-soft);
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            border: 5px solid var(--primary-gold);
+        }
+        /* FEATURES */
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem 4rem;
+            padding: 2.2rem 2rem;
+            background: #FCEEF1;
+            margin-bottom: 3.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+        .feature-text h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.1rem;
+            font-weight: 700;
+        }
+        .feature-text p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+        /* CARRUSEL DE CREACIONES - TOTALMENTE RESPONSIVO */
+        .carousel-section {
+            max-width: 1200px;
+            margin: 0 auto 5rem auto;
+            padding: 0 1.5rem;
+        }
+        .carousel-section-header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+        .carousel-section-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .carousel-section-header h3 span {
+            color: var(--primary-gold);
+        }
+        .carousel-section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .carousel-custom-container {
+            background: #FFF;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.16);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-item-card {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            align-items: stretch;
+            min-height: 480px;
+            width: 100%;
+        }
+        .carousel-item-media {
+            background: linear-gradient(135deg, #FCEEF1 0%, #FFF5F7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            position: relative;
+            min-height: 320px;
+        }
+        .carousel-item-img {
+            max-height: 380px;
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(61, 44, 48, 0.15);
+            border: 3px solid rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease;
+        }
+        .carousel-item-img:hover {
+            transform: scale(1.02);
+        }
+        .carousel-badge-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-gold);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        .carousel-item-body {
+            padding: 3rem 3rem 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .carousel-item-body .tagline {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .carousel-item-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+            line-height: 1.22;
+            font-weight: 700;
+        }
+        .carousel-item-body p {
+            color: var(--text-muted);
+            font-size: clamp(0.88rem, 1.8vw, 0.95rem);
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+        .carousel-specs {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-cream);
+            border-radius: 12px;
+            border: 1px dashed rgba(212, 175, 55, 0.35);
+            flex-wrap: wrap;
+        }
+        .spec-item {
+            flex: 1 1 80px;
+        }
+        .spec-item small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .spec-item strong {
+            color: var(--text-main);
+            font-size: 0.86rem;
+            white-space: nowrap;
+        }
+        .carousel-pricing-row {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .carousel-price {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+        /* CONTROLES CARRUSEL */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.95;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.2s ease;
+            z-index: 5;
+        }
+        .carousel-control-prev {
+            left: 15px;
+        }
+        .carousel-control-next {
+            right: 15px;
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background: var(--primary-gold);
+            opacity: 1;
+            transform: translateY(-50%) scale(1.06);
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(20%) sepia(50%) saturate(1000%) hue-rotate(330deg);
+            width: 18px;
+            height: 18px;
+        }
+        .carousel-control-prev:hover .carousel-control-prev-icon,
+        .carousel-control-next:hover .carousel-control-next-icon {
+            filter: brightness(0) invert(1);
+        }
+        .carousel-indicators {
+            bottom: 12px;
+            margin-bottom: 0;
+        }
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-gold);
+            opacity: 0.35;
+            border: none;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+        }
+        .carousel-indicators .active {
+            opacity: 1;
+            width: 24px;
+            border-radius: 6px;
+        }
+        /* SECCIÓN NUEVA: CLIENTES SATISFECHOS */
+        .testimonials-section {
+            background: linear-gradient(180deg, #FFF9FA 0%, #FDF1F4 50%, #FFF9FA 100%);
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .testimonials-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: #FFF;
+            border-radius: 22px;
+            padding: 2.2rem;
+            box-shadow: 0 10px 30px rgba(61, 44, 48, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial-user-photo {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.2rem;
+            border: 2px solid rgba(212, 175, 55, 0.25);
+        }
+        .stars-row {
+            color: #FFB800;
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-quote {
+            font-style: italic;
+            color: var(--text-main);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+        .testimonial-author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-top: 1px dashed rgba(212, 175, 55, 0.25);
+            padding-top: 0.9rem;
+        }
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-gold);
+            flex-shrink: 0;
+        }
+        .author-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 0.1rem;
+        }
+        .author-tag {
+            font-size: 0.75rem;
+            color: var(--accent-dark-gold);
+            margin: 0;
+        }
+        /* CATALOG GRID */
+        .catalog-section {
+            max-width: 1200px;
+            margin: 0 auto 5rem auto;
+            padding: 0 1.5rem;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+        .section-title span {
+            color: var(--primary-gold);
+        }
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card-pasteleria {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            height: 100%;
+        }
+        .card-pasteleria:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+        }
+        .card-img-custom {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.2rem;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+        .card-pasteleria h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .card-pasteleria p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+        .card-footer-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        .price {
+            font-weight: 700;
+            color: var(--primary-gold);
+            font-size: 1.15rem;
+        }
+        .btn-arrow {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            font-size: 1rem;
+        }
+        .btn-arrow:hover {
+            background-color: var(--accent-dark-gold);
+            transform: scale(1.08);
+        }
+        /* BANNER ROSAS Y FRESAS */
+        .coffee-banner {
+            max-width: 1200px;
+            margin: 0 auto 5rem auto;
+            background: #F9EBEF;
+            border-radius: 25px;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .coffee-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            border: 3px solid var(--primary-gold);
+            margin: 0 auto;
+        }
+        .coffee-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .coffee-content h3 span {
+            color: var(--primary-gold);
+        }
+        /* FOOTER */
+        footer {
+            background: #2B1D22;
+            color: #FCEEF1;
+            padding: 4rem 6% 2rem 6%;
+            border-top: 3px solid var(--primary-gold);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+        }
+        .footer-col h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-col ul li a {
+            color: #D1B8BF;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+        .footer-col ul li a:hover {
+            color: var(--primary-gold);
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #A38890;
+        }
+        /* BOTÓN WHATSAPP FLOTANTE */
+        .whatsapp-stamp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 64px;
+            height: 64px;
+            background-color: var(--accent-pink);
+            border-radius: 35% 65% 60% 40% / 40% 50% 50% 60%;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1040;
+            text-decoration: none;
+            border: 2px dashed var(--primary-gold);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-stamp:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .whatsapp-stamp svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+        }
+        .custom-toast {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            background: var(--primary-gold);
+            color: white;
+            padding: 12px 22px;
+            border-radius: 12px;
+            display: none;
+            z-index: 1060;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* MODAL STYLING */
+        .modal-content {
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(61, 44, 48, 0.15);
+            background-color: #FFF9FA;
+        }
+        .modal-header {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.25rem 1.5rem;
+        }
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .modal-title span {
+            color: var(--primary-gold);
+        }
+        .modal-footer {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.25rem 1.5rem;
+        }
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.65rem 0.9rem;
+            background-color: #FFF;
+            color: var(--text-main);
+        }
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.35rem;
+        }
+        .cart-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+        .cart-item-row:last-child {
+            border-bottom: none;
+        }
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #b03a48;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .cart-item-remove:hover {
+            background-color: #ffe6e9;
+        }
+        .whatsapp-btn-modal {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-btn-modal:hover {
+            background-color: #1ebd5a;
+            color: white;
+            transform: translateY(-1px);
+        }
+        /* MEDIA QUERIES GENERALES PARA RESPONSIVE PERFECTO */
+        @media (max-width: 992px) {
+            .carousel-item-card {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .carousel-item-media {
+                min-height: 280px;
+                padding: 2rem 1.5rem 1rem 1.5rem;
+            }
+            .carousel-item-img {
+                max-height: 300px;
+                max-width: 300px;
+            }
+            .carousel-item-body {
+                padding: 1.5rem 2rem 2.5rem 2rem;
+                text-align: center;
+            }
+            .carousel-specs {
+                justify-content: center;
+            }
+            .carousel-pricing-row {
+                justify-content: center;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 4%;
+            }
+            nav {
+                display: none;
+            }
+            .brand h1 {
+                font-size: 1.25rem;
+            }
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2.5rem 5%;
+                gap: 2rem;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                margin: 0 auto 1.5rem auto;
+            }
+            .hero-content .d-flex {
+                justify-content: center;
+            }
+            .hero-img {
+                max-width: 280px;
+            }
+            .features {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1.8rem 1.2rem;
+                align-items: flex-start;
+                max-width: 400px;
+                margin: 0 auto 3rem auto;
+                border-radius: 16px;
+            }
+            .coffee-banner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .carousel-control-prev {
+                left: 6px;
+            }
+            .carousel-control-next {
+                right: 6px;
+            }
+            .carousel-item-media {
+                padding: 1.5rem 1rem 0.5rem 1rem;
+            }
+            .carousel-item-img {
+                max-height: 250px;
+                max-width: 250px;
+            }
+            .carousel-item-body {
+                padding: 1.2rem 1.2rem 2.5rem 1.2rem;
+            }
+            .carousel-specs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+                text-align: left;
+            }
+            .whatsapp-stamp {
+                width: 56px;
+                height: 56px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .whatsapp-stamp svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* ESTILOS ADICIONALES PARA LAS NUEVAS MEJORAS */
+        .step-badge {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-dark-gold));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 1.2rem auto;
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.35);
+        }
+
+        .flavor-pill {
+            background: #FFF;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 18px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(61, 44, 48, 0.04);
+            height: 100%;
+        }
+
+        .flavor-pill:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.18);
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: var(--accent-dark-gold);
+            background-color: #FCEEF1;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .accordion-item {
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 14px !important;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+            background-color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <h1>La Tortería by Val</h1>
+            <span>Pastelería Artesanal</span>
+        </div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#destacadas">Creaciones</a>
+            <a href="#como-pedir">¿Cómo Pedir?</a>
+            <a href="#sabores">Sabores</a>
+            <a href="#testimonios">Clientes</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#faq">Preguntas</a>
+            <a href="#nosotros">Nosotros</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="cart-btn-icon" onclick="openCartModal()" title="Ver carrito">
+                🛒 <span class="cart-badge" id="cartCount">0</span>
+            </button>
+            <button class="btn-gold" onclick="openOrderModal()">Ordena Ahora</button>
+        </div>
+    </header>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h2>La Vida es Mejor con algo <span>Dulce.</span></h2>
+            <p>Tortas y detalles artesanales de autor, elaborados con los ingredientes más finos, frescura diaria y el
+                toque mágico de Val.</p>
+            <div class="d-flex gap-3 flex-wrap">
+                <button class="btn-gold"
+                    onclick="document.getElementById('destacadas').scrollIntoView({ behavior: 'smooth' })">Ver
+                    Creaciones Reales</button>
+                <button class="btn-outline-gold" onclick="scrollToCatalog()">Catálogo Completo</button>
+            </div>
+        </div>
+        <div class="hero-img-container">
+            <img src="./images/rn_image_picker_lib_temp_8c396efc-448a-401c-9a16-c6fcd6696d1d.jpg"
+                alt="Torta Corazón Rosada Val" class="hero-img">
+        </div>
+    </section>
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="feature-item">
+            <div class="feature-icon">🧁</div>
+            <div class="feature-text">
+                <h4>Recetas Artesanales</h4>
+                <p>Horneados frescos diariamente</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">✨</div>
+            <div class="feature-text">
+                <h4>Toque Exclusivo</h4>
+                <p>Diseños con estilo y elegancia</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🍓</div>
+            <div class="feature-text">
+                <h4>Ingredientes Premium</h4>
+                <p>Chocolate belga y fresas frescas</p>
+            </div>
+        </div>
+    </section>
+    <!-- SECCIÓN: CARRUSEL DE TORTAS REALES VAL (TOTALMENTE RESPONSIVO) -->
+    <section class="carousel-section" id="destacadas">
+        <div class="carousel-section-header">
+            <h3>Nuestras Creaciones <span>Exclusivas</span></h3>
+            <p>Explora algunas de las tortas y arreglos artesanales elaborados recientemente en nuestro taller</p>
+        </div>
+        <div class="carousel-custom-container">
+            <div id="cakeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <!-- Indicadores -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#cakeCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#cakeCarousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#cakeCarousel" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#cakeCarousel" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#cakeCarousel" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <!-- SLIDE 1: Torta Corazón Vintage Rosa -->
+                    <div class="carousel-item">
+                        <div class="carousel-item-card">
+                            <div class="carousel-item-media">
+                                <span class="carousel-badge-tag">Favorita de Cumpleaños</span>
+                                <img src="./images/rn_image_picker_lib_temp_8c396efc-448a-401c-9a16-c6fcd6696d1d.jpg"
+                                    alt="Torta Corazón Glam Pink Vintage" class="carousel-item-img">
+                            </div>
+                            <div class="carousel-item-body">
+                                <span class="tagline">Edición Romántica & Coquette</span>
+                                <h4>Torta Corazón Glam Pink</h4>
+                                <p>Delicado bizcocho en forma de corazón con volantes estilo vintage piping en crema
+                                    rosa pastel, perlas doradas comestibles y topper 'Happy Birthday' en acrílico espejo
+                                    dorado. Relleno de frutos rojos y arequipe artesanal.</p>
+                                <div class="carousel-specs">
+                                    <div class="spec-item"><small>Porciones</small><strong>10 a 12 pers.</strong></div>
+                                    <div class="spec-item"><small>Sabor estrella</small><strong>Vainilla
+                                            Francesa</strong></div>
+                                    <div class="spec-item"><small>Acabado</small><strong>Perlas de Oro</strong></div>
+                                </div>
+                                <div class="carousel-pricing-row">
+                                    <span class="carousel-price">$78.000</span>
+                                    <button class="btn-gold" onclick="addToCart('Torta Corazón Glam Pink', 78000)">Pedir
+                                        esta Torta 🛍️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE 2: Torta Plim Plim Fiesta Infantil -->
+                    <div class="carousel-item active">
+                        <div class="carousel-item-card">
+                            <div class="carousel-item-media">
+                                <span class="carousel-badge-tag">Infantil Temática</span>
+                                <img src="./images/rn_image_picker_lib_temp_e73f1cdf-0d08-4e43-82e2-f84daa644020.jpg"
+                                    alt=" Torta Circo Plim Plim Mágico" class="carousel-item-img">
+                            </div>
+                            <div class="carousel-item-body">
+                                <span class="tagline">Primer Año & Baby Celebrations</span>
+                                <h4>Torta Circo Mágico Plim Plim</h4>
+                                <p>Pastel con textura estriada en crema rosa y coronación lila con lazo de satén.
+                                    Decorada con carpa de circo, topper de nombre personalizado en relieve dorado y
+                                    personajes entrañables para crear recuerdos mágicos.</p>
+                                <div class="carousel-specs">
+                                    <div class="spec-item"><small>Porciones</small><strong>15 a 18 pers.</strong></div>
+                                    <div class="spec-item"><small>Personalizable</small><strong>Nombre y Edad</strong>
+                                    </div>
+                                    <div class="spec-item"><small>Relleno</small><strong>Chocolate & Crema</strong>
+                                    </div>
+                                </div>
+                                <div class="carousel-pricing-row">
+                                    <span class="carousel-price">$95.000</span>
+                                    <button class="btn-gold"
+                                        onclick="addToCart('Torta Circo Mágico Plim Plim', 95000)">Pedir esta Torta
+                                        🛍️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE 3: Torta Pasión Verdolaga Atlético Nacional -->
+                    <div class="carousel-item">
+                        <div class="carousel-item-card">
+                            <div class="carousel-item-media">
+                                <span class="carousel-badge-tag">Fútbol & Pasión</span>
+                                <img src="./images/rn_image_picker_lib_temp_000b0e95-8e07-4fb3-b616-b98507ab5dfd.jpg"
+                                    alt="Torta Pasión Verdolaga" class="carousel-item-img">
+                            </div>
+                            <div class="carousel-item-body">
+                                <span class="tagline">Homenaje Futbolero Paisa</span>
+                                <h4>Torta Pasión Verdolaga</h4>
+                                <p>Elegante diseño cilíndrico en buttercream blanco sedoso con el escudo oficial en
+                                    papel de azúcar comestible, barras artesanales de chocolate esmeralda y rosetones de
+                                    chantilly. ¡La preferida para celebrar victorias!</p>
+                                <div class="carousel-specs">
+                                    <div class="spec-item"><small>Porciones</small><strong>12 a 15 pers.</strong></div>
+                                    <div class="spec-item"><small>Chocolate</small><strong>Artesanal Verde</strong>
+                                    </div>
+                                    <div class="spec-item"><small>Ocasión</small><strong>Cumpleaños & Festejos</strong>
+                                    </div>
+                                </div>
+                                <div class="carousel-pricing-row">
+                                    <span class="carousel-price">$82.000</span>
+                                    <button class="btn-gold" onclick="addToCart('Torta Pasión Verdolaga', 82000)">Pedir
+                                        esta Torta 🛍️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE 4: Torta Pétalos Dorados y Acuarela -->
+                    <div class="carousel-item">
+                        <div class="carousel-item-card">
+                            <div class="carousel-item-media">
+                                <span class="carousel-badge-tag">Diseño Botánico</span>
+                                <img src="./images/rn_image_picker_lib_temp_26894907-9ed4-47ec-8714-f36901530cd9.jpg"
+                                    alt=" Torta Pétalos Dorados y Acuarela" class="carousel-item-img">
+                            </div>
+                            <div class="carousel-item-body">
+                                <span class="tagline">Arte Floral de Autor</span>
+                                <h4>Torta Flor Amarilla & Destellos</h4>
+                                <p>Pintura al óleo comestible sobre crema con técnica de espátula en tonos amarillos
+                                    cálidos, salpicaduras de purpurina dorada comestible y topper acrílico Happy
+                                    Birthday. Textura esponjosa de bizcocho con notas cítricas.</p>
+                                <div class="carousel-specs">
+                                    <div class="spec-item"><small>Porciones</small><strong>10 a 12 pers.</strong></div>
+                                    <div class="spec-item"><small>Técnica</small><strong>Espatulado al óleo</strong>
+                                    </div>
+                                    <div class="spec-item"><small>Sabor</small><strong>Maracuyá & Naranja</strong></div>
+                                </div>
+                                <div class="carousel-pricing-row">
+                                    <span class="carousel-price">$75.000</span>
+                                    <button class="btn-gold"
+                                        onclick="addToCart('Torta Flor Amarilla & Destellos', 75000)">Pedir esta Torta
+                                        🛍️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE 5: Box Arreglo Rosas Naturales y Fresas con Chocolate -->
+                    <div class="carousel-item">
+                        <div class="carousel-item-card">
+                            <div class="carousel-item-media">
+                                <span class="carousel-badge-tag">Detalle & Aniversario</span>
+                                <img src="./images/rn_image_picker_lib_temp_f62e0be2-e4e9-4cf2-8533-ca4b67df2959.jpg"
+                                    alt="Box Rosas Rojas y Fresas Gourmet" class="carousel-item-img">
+                            </div>
+                            <div class="carousel-item-body">
+                                <span class="tagline">Regalos que Enamoran</span>
+                                <h4>Box Rosas Rojas & Fresas Bañadas</h4>
+                                <p>Caja sombrerera de lujo que combina frescas rosas rojas aterciopeladas y 10 fresas
+                                    seleccionadas bañadas en chocolate artesanal semi-amargo con finas líneas de
+                                    chocolate blanco, follaje silvestre y globo decorativo.</p>
+                                <div class="carousel-specs">
+                                    <div class="spec-item"><small>Contenido</small><strong>Rosas + 10 Fresas</strong>
+                                    </div>
+                                    <div class="spec-item"><small>Chocolate</small><strong>Semi-amargo 56%</strong>
+                                    </div>
+                                    <div class="spec-item"><small>Presentación</small><strong>Caja de Lujo +
+                                            Globo</strong></div>
+                                </div>
+                                <div class="carousel-pricing-row">
+                                    <span class="carousel-price">$89.000</span>
+                                    <button class="btn-gold"
+                                        onclick="addToCart('Box Rosas Rojas & Fresas Bañadas', 89000)">Pedir este
+                                        Detalle 🛍️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flechas de navegación -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#cakeCarousel" data-bs-slide="prev"
+                    title="Anterior">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#cakeCarousel" data-bs-slide="next"
+                    title="Siguiente">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN 1: ¿CÓMO PEDIR EN 3 PASOS? -->
+    <section class="py-5" id="como-pedir" style="background: #FFF; border-top: 1px solid rgba(212, 175, 55, 0.15); border-bottom: 1px solid rgba(212, 175, 55, 0.15);">
+        <div class="container py-3" style="max-width: 1100px;">
+            <div class="text-center mb-5">
+                <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-pink); font-weight: 700;">Simple & Rápido</span>
+                <h3 class="section-title mt-2 mb-2">¿Cómo Funciona tu <span>Pedido?</span> 🍰</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; margin: 0 auto;">
+                    Tu pedido llega fresco y seguro a tu celebración en tan solo 3 sencillos pasos.
+                </p>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="p-4 h-100 rounded-4" style="background: var(--bg-cream); border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <div class="step-badge">1</div>
+                        <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.6rem;">Elige o Cotiza</h4>
+                        <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">Selecciona una creación del catálogo o pulsa "Ordena Ahora" para personalizar tu diseño.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 h-100 rounded-4" style="background: var(--bg-cream); border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <div class="step-badge">2</div>
+                        <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.6rem;">Confirma por WhatsApp</h4>
+                        <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">El modal genera tu mensaje detallado para confirmar fecha, hora y dedicatoria personalizada.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 h-100 rounded-4" style="background: var(--bg-cream); border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <div class="step-badge">3</div>
+                        <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.6rem;">Recibe & Celebra</h4>
+                        <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">Hornamos el mismo día para entregarte tu torta con la máxima frescura y presentación de lujo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN 2: SABORES Y RELLENOS ARTESANALES -->
+    <section class="py-5" id="sabores" style="background: var(--bg-cream);">
+        <div class="container py-3" style="max-width: 1100px;">
+            <div class="text-center mb-5">
+                <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-pink); font-weight: 700;">Nuestra Carta Dulce</span>
+                <h3 class="section-title mt-2 mb-2">Sabores & Rellenos <span>Estrella</span> 🍨</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; margin: 0 auto;">
+                    Puedes combinar tu masa favorita con nuestros rellenos artesanales en cualquier pedido personalizado.
+                </p>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <div class="flavor-pill">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍓</div>
+                        <h5 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Frutos Rojos Silvestres</h5>
+                        <small style="color: var(--text-muted); font-size: 0.78rem;">Compota 100% natural sin conservantes</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="flavor-pill">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍫</div>
+                        <h5 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Chocolate Belga 56%</h5>
+                        <small style="color: var(--text-muted); font-size: 0.78rem;">Ganache cremosa y sedosa de cacao puro</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="flavor-pill">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍮</div>
+                        <h5 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Arequipe de Antaño</h5>
+                        <small style="color: var(--text-muted); font-size: 0.78rem;">Dulce de leche artesanal de cocción lenta</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="flavor-pill">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍋</div>
+                        <h5 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem;">Maracuyá & Naranja</h5>
+                        <small style="color: var(--text-muted); font-size: 0.78rem;">Cremoso cítrico para balancear el dulzor</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CLIENTES SATISFECHOS (CARRUSEL CON GENTE FELIZ Y PASTELES) -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="testimonials-inner">
+            <div class="text-center mb-5">
+                <span
+                    style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-pink); font-weight: 700;">Momentos
+                    Dulces & Inolvidables</span>
+                <h3 class="section-title mt-2 mb-2">Clientes <span>Satisfechos</span> ❤️</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto;">
+                    La mayor recompensa de Val es ver la emoción y las sonrisas en cada celebración familiar y
+                    cumpleaños.
+                </p>
+            </div>
+            <!-- Carrusel de Testimonios y Momentos Felices -->
+            <div id="clientsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+                <div class="carousel-indicators" style="bottom: -40px;">
+                    <button type="button" data-bs-target="#clientsCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Cliente 1"></button>
+                    <button type="button" data-bs-target="#clientsCarousel" data-bs-slide-to="1"
+                        aria-label="Cliente 2"></button>
+                    <button type="button" data-bs-target="#clientsCarousel" data-bs-slide-to="2"
+                        aria-label="Cliente 3"></button>
+                </div>
+                <div class="carousel-inner pb-3">
+                    <!-- SLIDE TESTIMONIO 1: Cumpleaños con pastel y velas -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center align-items-center">
+                            <div class="col-md-6 col-lg-5">
+                                <img src="/images/rn_image_picker_lib_temp_99d2d25a-1686-4695-aab6-dce2de90a896.jpg"
+                                    alt="Cumpleaños feliz con torta" class="w-100 rounded-4 shadow-sm"
+                                    style="height: 340px; object-fit: cover; border: 3px solid rgba(212, 175, 55, 0.3);">
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="testimonial-card">
+                                    <div>
+                                        <div class="stars-row">★★★★★</div>
+                                        <p class="testimonial-quote">
+                                            "¡La torta corazón para el cumpleaños de mi hermana superó todas las
+                                            expectativas! No solo era una obra de arte por fuera, sino que el bizcocho
+                                            estaba esponjoso y con el dulzor exacto. Todos los invitados quedaron
+                                            fascinados."
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
+                                            alt="Camila Morales" class="author-avatar">
+                                        <div>
+                                            <div class="author-name">Camila Morales</div>
+                                            <p class="author-tag">Celebración de Cumpleaños • Envigado</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE TESTIMONIO 2: Familia celebrando primer añito -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center align-items-center">
+                            <div class="col-md-6 col-lg-5">
+                                <img src="/images/rn_image_picker_lib_temp_2709eb61-517b-4594-9f19-7a918963cda4.jpg"
+                                    alt="Familia feliz con fiesta y pastel" class="w-100 rounded-4 shadow-sm"
+                                    style="height: 340px; object-fit: cover; border: 3px solid rgba(212, 175, 55, 0.3);">
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="testimonial-card">
+                                    <div>
+                                        <div class="stars-row">★★★★★</div>
+                                        <p class="testimonial-quote">
+                                            "Le pedimos a Val la torta para el primer añito de nuestra pequeña y captó
+                                            cada detalle que queríamos en el diseño. Llegó impecable, puntual y los
+                                            niños se divirtieron un montón. ¡Será nuestra pastelería de cabecera
+                                            siempre!"
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                                            alt="Andrés & Carolina" class="author-avatar">
+                                        <div>
+                                            <div class="author-name">Andrés & Carolina Restrepo</div>
+                                            <p class="author-tag">Fiesta Infantil • El Poblado</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE TESTIMONIO 3: Pareja celebrando aniversario con fresas y torta -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center align-items-center">
+                            <div class="col-md-6 col-lg-5">
+                                <img src="/images/rn_image_picker_lib_temp_de94d31a-7387-4ac1-adcd-a39da9e0b14a.jpg"
+                                    alt="Pareja feliz celebrando" class="w-100 rounded-4 shadow-sm"
+                                    style="height: 340px; object-fit: cover; border: 3px solid rgba(212, 175, 55, 0.3);">
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="testimonial-card">
+                                    <div>
+                                        <div class="stars-row">★★★★★</div>
+                                        <p class="testimonial-quote">
+                                            "El box de rosas rojas y fresas con chocolate fue el regalo perfecto de
+                                            aniversario para mi prometida. La atención por WhatsApp fue muy amable y el
+                                            empaque es de total lujo. ¡Mil gracias Val por hacer el momento mágico!"
+                                        </p>
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                                            alt="Mateo Herrera" class="author-avatar">
+                                        <div>
+                                            <div class="author-name">Mateo Herrera</div>
+                                            <p class="author-tag">Aniversario de Pareja • Laureles</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controles para el carrusel de clientes -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#clientsCarousel"
+                    data-bs-slide="prev" title="Testimonio anterior">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#clientsCarousel"
+                    data-bs-slide="next" title="Siguiente testimonio">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG GRID -->
+    <section class="catalog-section" id="catalogo">
+        <h3 class="section-title">Nuestras Creaciones <span>Estrella</span></h3>
+        <div class="catalog-grid">
+            <div class="card-pasteleria">
+                <img src="./images/girasol.jpg" alt="Torta Floral de Autor" class="card-img-custom">
+                <h3>Torta Floral de Autor</h3>
+                <p>Bizcocho suave decorado con delicadas flores en crema espátula y detalles dorados.</p>
+                <div class="card-footer-custom">
+                    <span class="price">$75.000</span>
+                    <button class="btn-arrow" onclick="addToCart('Torta Floral de Autor', 75000)"
+                        title="Agregar al carrito">➔</button>
+                </div>
+            </div>
+            <div class="card-pasteleria">
+                <img src="./images/cora.jpg" alt="Torta Corazón Rosa" class="card-img-custom">
+                <h3>Torta Corazón Glam Pink</h3>
+                <p>Personalizada con cobertura suave en crema rosa, perlas de oro y topper acrílico.</p>
+                <div class="card-footer-custom">
+                    <span class="price">$78.000</span>
+                    <button class="btn-arrow" onclick="addToCart('Torta Corazón Glam Pink', 78000)"
+                        title="Agregar al carrito">➔</button>
+                </div>
+            </div>
+            <div class="card-pasteleria">
+                <img src="./images/paw.jpg" alt="Torta Infantil" class="card-img-custom">
+                <h3>Torta Infantil Temática</h3>
+                <p>Diseños divertidos para cumpleaños y momentos inolvidables con personajes favoritos.</p>
+                <div class="card-footer-custom">
+                    <span class="price">$95.000</span>
+                    <button class="btn-arrow" onclick="addToCart('Torta Infantil Temática', 95000)"
+                        title="Agregar al carrito">➔</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN 3: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="py-5" id="faq" style="background: #FFF; border-top: 1px solid rgba(212, 175, 55, 0.15); border-bottom: 1px solid rgba(212, 175, 55, 0.15);">
+        <div class="container py-3" style="max-width: 860px;">
+            <div class="text-center mb-5">
+                <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-pink); font-weight: 700;">Resolvemos tus dudas</span>
+                <h3 class="section-title mt-2 mb-2">Preguntas <span>Frecuentes</span> 💡</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0 auto;">
+                    Todo lo que necesitas saber sobre entregas, pedidos personalizados y conservación.
+                </p>
+            </div>
+            <div class="accordion" id="accordionFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            ¿Con cuánta anticipación debo realizar mi pedido?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted" style="font-size: 0.9rem;">
+                            Para tortas personalizadas temáticas recomendamos de <strong>2 a 3 días de anticipación</strong>. Si requieres un pedido express para el mismo día o el siguiente, escríbenos directamente a WhatsApp y te confirmamos disponibilidad inmediata de creaciones del día.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            ¿Hacen envíos a domicilio en Medellín y el Área Metropolitana?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted" style="font-size: 0.9rem;">
+                            ¡Sí! Contamos con servicio de transporte especializado para pastelería y arreglos florales en Medellín, Envigado, Sabaneta, Itagüí y Bello, garantizando que tu pastel llegue fresco y perfectamente refrigerado.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            ¿Puedo personalizar los colores, dedicatoria o topper?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted" style="font-size: 0.9rem;">
+                            Totalmente. Cada pedido se elabora artesanalmente por Val. Puedes elegir la paleta de colores, la frase en el topper acrílico y añadir dedicatorias escritas a mano sin costo adicional.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            ¿Cuáles son los medios de pago disponibles?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFAQ">
+                        <div class="accordion-body text-muted" style="font-size: 0.9rem;">
+                            Aceptamos transferencias Bancolombia, Nequi, Daviplata y PSE. Para asegurar tu fecha de entrega se reserva con un abono del 50% y el saldo se cancela contra entrega.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER ROSAS Y FRESAS -->
+    <section class="coffee-banner">
+        <img src="./images/mar.jpg" alt="Arreglo de Rosas y Fresas" class="coffee-img">
+        <div class="coffee-content" id="nosotros">
+            <h3>Detalles que <span>Enamoran</span></h3>
+            <p>Sorprende a esa persona especial con nuestros exclusivos arreglos de rosas naturales y fresas bañadas en
+                chocolate artesanal.</p>
+            <br>
+            <button class="btn-gold" onclick="addToCart('Box Rosas Rojas & Fresas Bañadas', 89000)">Pedir este
+                Detalle</button>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>La Tortería by Val</h4>
+                <p style="font-size: 0.85rem; color: #D1B8BF;">Pastelería Artesanal de autor. Creamos experiencias
+                    dulces y detalles únicos preparados con el toque exclusivo de Val.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#destacadas">Creaciones Exclusivas</a></li>
+                    <li><a href="#como-pedir">¿Cómo Pedir?</a></li>
+                    <li><a href="#sabores">Sabores</a></li>
+                    <li><a href="#testimonios">Clientes Satisfechos</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Atención</h4>
+                <ul>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Garantía de Frescura</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ubicación</h4>
+                <p style="font-size: 0.85rem; color: #D1B8BF;">📍 Medellín, Colombia<br>📞 +57 (300) 123-4567<br>✉️
+                    hola@latorteriabyval.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 La Tortería by Val. Todos los derechos reservados.
+        </div>
+    </footer>
+    <!-- SELLO WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/573001234567?text=¡Hola!%20Vengo%20de%20la%20página%20de%20La%20Tortería%20by%20Val%20y%20quiero%20hacer%20un%20pedido."
+        target="_blank" class="whatsapp-stamp" title="¡Escríbenos por WhatsApp!">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01-1.87-1.87-4.36-2.9-7.01-2.9zm0 1.83c2.18 0 4.23.85 5.77 2.39 1.54 1.54 2.39 3.59 2.39 5.77 0 4.5-3.66 8.16-8.16 8.16-1.47 0-2.91-.39-4.17-1.13l-.3-.18-3.11.82.83-3.03-.19-.31c-.81-1.3-1.24-2.82-1.24-4.37 0-4.5 3.66-8.16 8.16-8.16zm4.33 9.71c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.8-.2-.47-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.3 0.98 2.46c.12.16 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z" />
+        </svg>
+    </a>
+    <!-- TOAST NOTIFICACIÓN -->
+    <div class="custom-toast" id="toast">¡Producto agregado al carrito!</div>
+    <!-- MODAL: CARRITO DE COMPRAS -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Tu Carrito de <span>Dulces</span> 🛍️</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartEmptyState" class="text-center py-4 text-muted" style="display: none;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧁</div>
+                        <p class="mb-2">Tu carrito está vacío.</p>
+                        <small>¡Explora nuestro catálogo y agrega tus creaciones favoritas!</small>
+                    </div>
+                    <div id="cartContentState">
+                        <div id="cartItemsList" class="mb-3">
+                            <!-- Renderizado dinámico de productos -->
+                        </div>
+                        <div
+                            class="d-flex justify-content-between align-items-center pt-3 border-top border-2 border-warning-subtle mb-3">
+                            <span class="fw-bold" style="color: var(--text-main);">Total estimado:</span>
+                            <span class="fs-5 fw-bold text-success" id="cartTotalDisplay">$0</span>
+                        </div>
+                        <div class="border-top pt-3">
+                            <h6 class="fw-bold mb-2" style="font-size: 0.9rem; color: var(--text-main);">Datos para la
+                                entrega:</h6>
+                            <div class="mb-2">
+                                <label class="form-label" for="cartCustomerName">Tu Nombre Completo *</label>
+                                <input type="text" class="form-control form-control-sm" id="cartCustomerName"
+                                    placeholder="Ej: Marcela Gómez" required>
+                            </div>
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="cartDeliveryDate">Fecha deseada</label>
+                                    <input type="date" class="form-control form-control-sm" id="cartDeliveryDate">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="cartDeliveryAddress">Dirección / Barrio</label>
+                                    <input type="text" class="form-control form-control-sm" id="cartDeliveryAddress"
+                                        placeholder="Ej: Poblado, Calle 10">
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label" for="cartNotes">Nota especial o mensaje para la
+                                    tarjeta</label>
+                                <input type="text" class="form-control form-control-sm" id="cartNotes"
+                                    placeholder="Ej: Decorar con feliz cumpleaños mamá">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3"
+                        data-bs-dismiss="modal">Seguir Viendo</button>
+                    <button type="button" class="whatsapp-btn-modal" id="btnSendCartWhatsApp"
+                        onclick="sendCartOrderToWhatsApp()">
+                        <span>Pedir por WhatsApp</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01-2.9zm0 1.83c2.18 0 4.23.85 5.77 2.39 1.54 1.54 2.39 3.59 2.39 5.77 0 4.5-3.66 8.16-8.16 8.16-1.47 0-2.91-.39-4.17-1.13l-.3-.18-3.11.82.83-3.03-.19-.31c-.81-1.3-1.24-2.82-1.24-4.37 0-4.5 3.66-8.16 8.16-8.16zm4.33 9.71c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.8-.2-.47-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.3 0.98 2.46c.12.16 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL: ORDENA AHORA (SOLICITUD PERSONALIZADA) -->
+    <div class="modal fade" id="customOrderModal" tabindex="-1" aria-labelledby="customOrderModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customOrderModalLabel">Cotiza tu <span>Pedido Especial</span> ✨</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customOrderForm" onsubmit="event.preventDefault(); sendCustomOrderToWhatsApp();">
+                        <div class="mb-3">
+                            <label for="customName" class="form-label">Tu Nombre *</label>
+                            <input type="text" class="form-control" id="customName" placeholder="¿Cómo te llamas?"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customProductType" class="form-label">Tipo de Creación *</label>
+                            <select class="form-select" id="customProductType" required>
+                                <option value="Torta Corazón Glam Pink">Torta Corazón Glam Pink ($78.000)</option>
+                                <option value="Torta Circo Mágico Plim Plim">Torta Circo Mágico Plim Plim ($95.000)
+                                </option>
+                                <option value="Torta Pasión Verdolaga (Nacional)">Torta Pasión Verdolaga ($82.000)
+                                </option>
+                                <option value="Torta Flor Amarilla & Destellos">Torta Flor Amarilla & Destellos
+                                    ($75.000)</option>
+                                <option value="Box Rosas Rojas & Fresas Bañadas">Box Rosas Rojas & Fresas Bañadas
+                                    ($89.000)</option>
+                                <option value="Otra idea dulce personalizada">Otra idea personalizada...</option>
+                            </select>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label for="customPortions" class="form-label">Porciones aprox.</label>
+                                <select class="form-select" id="customPortions">
+                                    <option value="6 - 8 porciones">6 - 8 porciones (pequeña)</option>
+                                    <option value="10 - 15 porciones" selected>10 - 15 porciones (mediana)</option>
+                                    <option value="20 - 25 porciones">20 - 25 porciones (grande)</option>
+                                    <option value="30+ porciones">30+ porciones (evento)</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="customDate" class="form-label">Fecha del Evento</label>
+                                <input type="date" class="form-control" id="customDate">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customDetails" class="form-label">Detalles y Diseño Deseado *</label>
+                            <textarea class="form-control" id="customDetails" rows="3"
+                                placeholder="Colores, dedicatoria, sabor o temática especial..." required></textarea>
+                        </div>
+                        <div class="modal-footer px-0 pb-0 pt-2 border-top-0 d-flex justify-content-between">
+                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="whatsapp-btn-modal">
+                                <span>Enviar a WhatsApp</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01-2.9zm0 1.83c2.18 0 4.23.85 5.77 2.39 1.54 1.54 2.39 3.59 2.39 5.77 0 4.5-3.66 8.16-8.16 8.16-1.47 0-2.91-.39-4.17-1.13l-.3-.18-3.11.82.83-3.03-.19-.31c-.81-1.3-1.24-2.82-1.24-4.37 0-4.5 3.66-8.16 8.16-8.16zm4.33 9.71c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.8-.2-.47-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.3 0.98 2.46c.12.16 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        const WHATSAPP_PHONE = '573001234567';
+        let cart = [];
+        // Instancias de modales Bootstrap
+        let cartModalInstance = null;
+        let customOrderModalInstance = null;
+        document.addEventListener('DOMContentLoaded', () => {
+            cartModalInstance = new bootstrap.Modal(document.getElementById('cartModal'));
+            customOrderModalInstance = new bootstrap.Modal(document.getElementById('customOrderModal'));
+        });
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price, id: Date.now() + Math.random() });
+            updateCartBadge();
+            showToast(`¡"${productName}" agregado al carrito!`);
+        }
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartBadge();
+            renderCartUI();
+        }
+        function updateCartBadge() {
+            const badge = document.getElementById('cartCount');
+            if (badge) {
+                badge.innerText = cart.length;
+            }
+        }
+        function renderCartUI() {
+            const emptyState = document.getElementById('cartEmptyState');
+            const contentState = document.getElementById('cartContentState');
+            const itemsList = document.getElementById('cartItemsList');
+            const totalDisplay = document.getElementById('cartTotalDisplay');
+            const sendBtn = document.getElementById('btnSendCartWhatsApp');
+            if (cart.length === 0) {
+                emptyState.style.display = 'block';
+                contentState.style.display = 'none';
+                sendBtn.disabled = true;
+                sendBtn.style.opacity = '0.5';
+                sendBtn.style.pointerEvents = 'none';
+                return;
+            }
+            emptyState.style.display = 'none';
+            contentState.style.display = 'block';
+            sendBtn.disabled = false;
+            sendBtn.style.opacity = '1';
+            sendBtn.style.pointerEvents = 'auto';
+            let total = 0;
+            itemsList.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+          <div class="cart-item-row">
+            <div>
+              <div class="fw-semibold" style="font-size: 0.92rem; color: var(--text-main);">${item.name}</div>
+              <small class="text-muted">$${item.price.toLocaleString('es-CO')}</small>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Eliminar este producto">✕ Quitar</button>
+          </div>
+        `;
+            }).join('');
+            totalDisplay.innerText = `$${total.toLocaleString('es-CO')}`;
+        }
+        function openCartModal() {
+            renderCartUI();
+            if (!cartModalInstance) {
+                cartModalInstance = new bootstrap.Modal(document.getElementById('cartModal'));
+            }
+            cartModalInstance.show();
+        }
+        function openOrderModal() {
+            if (!customOrderModalInstance) {
+                customOrderModalInstance = new bootstrap.Modal(document.getElementById('customOrderModal'));
+            }
+            customOrderModalInstance.show();
+        }
+        function sendCartOrderToWhatsApp() {
+            if (cart.length === 0) return;
+            const customerName = document.getElementById('cartCustomerName').value.trim();
+            const deliveryDate = document.getElementById('cartDeliveryDate').value;
+            const address = document.getElementById('cartDeliveryAddress').value.trim();
+            const notes = document.getElementById('cartNotes').value.trim();
+            if (!customerName) {
+                alert('Por favor ingresa tu nombre para saber a quién dirigirnos.');
+                document.getElementById('cartCustomerName').focus();
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const itemsText = cart.map(item => `  • ${item.name} - $${item.price.toLocaleString('es-CO')}`).join('\n');
+            let message = `¡Hola La Tortería by Val! 🍰✨\nQuiero confirmar el siguiente pedido de mi carrito:\n\n`;
+            message += `👤 *Cliente:* ${customerName}\n`;
+            if (deliveryDate) message += `📅 *Fecha requerida:* ${deliveryDate}\n`;
+            if (address) message += `📍 *Dirección / Lugar:* ${address}\n`;
+            if (notes) message += `📝 *Nota especial:* ${notes}\n`;
+            message += `\n🛍️ *Productos solicitados:*\n${itemsText}\n\n`;
+            message += `💰 *Total estimado:* $${total.toLocaleString('es-CO')}\n\n`;
+            message += `¿Me confirman disponibilidad y medios de pago por favor? Gracias.`;
+            const encodedUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+            window.open(encodedUrl, '_blank');
+            if (cartModalInstance) {
+                cartModalInstance.hide();
+            }
+        }
+        function sendCustomOrderToWhatsApp() {
+            const name = document.getElementById('customName').value.trim();
+            const productType = document.getElementById('customProductType').value;
+            const portions = document.getElementById('customPortions').value;
+            const date = document.getElementById('customDate').value;
+            const details = document.getElementById('customDetails').value.trim();
+            if (!name || !details) return;
+            let message = `¡Hola La Tortería by Val! 🎂✨\nQuiero cotizar un pedido personalizado con los siguientes datos:\n\n`;
+            message += `👤 *Nombre:* ${name}\n`;
+            message += `🍰 *Tipo de pedido:* ${productType}\n`;
+            message += `👥 *Porciones estimadas:* ${portions}\n`;
+            if (date) message += `📅 *Fecha del evento:* ${date}\n`;
+            message += `🎨 *Detalles y diseño deseado:*\n${details}\n\n`;
+            message += `Quedo atento(a) a la cotización y disponibilidad. ¡Muchas gracias!`;
+            const encodedUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+            window.open(encodedUrl, '_blank');
+            if (customOrderModalInstance) {
+                customOrderModalInstance.hide();
+            }
+            document.getElementById('customOrderForm').reset();
+        }
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3500);
+        }
+        function scrollToCatalog() {
+            document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
